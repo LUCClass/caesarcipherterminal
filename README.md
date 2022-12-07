@@ -45,7 +45,7 @@ A simple assembly language translation of the C program above is:
       str r0,[sp]     ; Save R0 and R1 on the stack so their values
       str r1,[sp,#4]  ; aren't nuked when we call puts
       
-      add r0,r1,#8    ; R0 <- R1 + 8, the address of argv[2]
+      ldr r0,[r1,#8]    ; R0 <- R1 + 8, the address of argv[2]
       bl puts         ; Call puts, passing argv[2] in R0
       
       add sp,#8
@@ -69,7 +69,7 @@ In assembly, you can do something like the following:
       str r0,[sp]     ; Save R0 and R1 on the stack so their values
       str r1,[sp,#4]  ; aren't nuked when we call atoi
       
-      add r0,r1,#8    ; R0 <- R1 + 8, the address of argv[1]
+      ldr r0,[r1,#8]    ; R0 <- R1 + 8, the address of argv[1]
       bl atoi         ; Call atoi, passing argv[1] in R0
                       ; atoi returns the integer value of the shift amount in R0
       
